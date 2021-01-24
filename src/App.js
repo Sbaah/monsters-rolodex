@@ -35,6 +35,7 @@ class App extends Component {
     this.state = {
       monsters: [],
       searchField: [],
+      title: [],
     };
     // telling java script what to do for the custom handleChange method
     // .bind
@@ -60,13 +61,13 @@ class App extends Component {
   // when it see this in parameters of the functions it will
   // automatically bind what is after 'this' to the parameter in the arrow function..
   handleChange = (e) => {
-    this.setState({ searchField: e.target.value });
+    this.setState({ searchField: e.target.value, title: e.target.value });
   };
 
   render() {
     // destructuring will allows us to pull properties of
     // an object and set them to the const that is in side of '{}'
-    const { monsters, searchField } = this.state;
+    const { monsters, searchField, title } = this.state;
 
     // includes() just check the value that was passed to see if it exits in the array.
     const filteredMonsters = monsters.filter((monster) =>
@@ -89,15 +90,17 @@ class App extends Component {
       handleChange={(e) => {
       this.setState({ searchField: e.target.value });
     }}
+
+     <CardList monsters={filteredMonsters}></CardList>
     */
     return (
       <div className='App'>
-        <h1> Monsters Rolodex </h1>
+        <h1> {title} </h1>
         <SearchBox
           placeholder='Search Monsters'
           handleChange={this.handleChange}
         />
-        <CardList monsters={filteredMonsters}></CardList>
+        <CardList monsters={monsters}></CardList>
       </div>
     );
   }
