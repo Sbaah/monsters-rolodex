@@ -91,7 +91,11 @@ class App extends Component {
       this.setState({ searchField: e.target.value });
     }}
 
+	// with the search filter...
      <CardList monsters={filteredMonsters}></CardList>
+	
+	// without the search 
+      <CardList monsters={monsters}></CardList>
     */
     return (
       <div className='App'>
@@ -100,7 +104,7 @@ class App extends Component {
           placeholder='Search Monsters'
           handleChange={this.handleChange}
         />
-        <CardList monsters={monsters}></CardList>
+        <CardList monsters={filteredMonsters}></CardList>
       </div>
     );
   }
